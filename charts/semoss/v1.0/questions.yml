@@ -1,0 +1,52 @@
+questions:
+- variable: semoss.image
+  default: "3.6.1"
+  description: "Enter the SEMOSS image tag"
+  type: string
+  label: SEMOSS Image Tag
+  group: "SEMOSS Configuration"
+questions:
+- variable: semoss.pullPolicy
+  default: "IfNotPresent"
+  description: "Pull Policy for SEMOSS"
+  type: string
+  label: Pull Policy for SEMOSS
+  group: "SEMOSS Configuration"
+questions:
+- variable: semoss.service.type
+  default: "ClusterIP"
+  description: "Service type for SEMOSS"
+  type: string
+  label: Service type for SEMOSS
+  group: "SEMOSS Configuration"
+questions:
+- variable: semoss.service.nodePort
+  default: ""
+  description: "NodePort for for SEMOSS (only if service type is NodePort)"
+  type: string
+  label: NodePort for for SEMOSS
+  group: "SEMOSS Configuration"
+questions:
+- variable: semoss.environmentVariables.SEMOSS_IS_CLUSTER
+  default: "true"
+  description: "SEMOSS Cluster"
+  type: boolean
+  show_subquestion_if: true
+  label: Is SEMOSS in Cluster Set Up?
+  group: "SEMOSS Configuration"
+  subquestions:
+  - variable: semoss.environmentVariables.AZCONN
+    default: "true"
+    description: "Using Azure storage?"
+    type: boolean
+    label: Azure Storage
+  - variable: semoss.environmentVariables.AZURE_ACCT_NAME
+    default: ""
+    description: "Azure Account Name"
+    type: string
+    label: Azure Storage Account Name
+   - variable: semoss.environmentVariables.AZURE_ACCT_KEY
+    default: ""
+    description: "Azure Account Key"
+    type: string
+    label: Azure Storage Account Key

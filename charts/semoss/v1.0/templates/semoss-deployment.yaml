@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ printf "%s-%s" .Values.env .Values.semoss.name }} 
+  labels:
+    app.kubernetes.io/name: {{ printf "%s-%s" .Values.env .Values.semoss.name }}
+    helm.sh/chart: {{ include "semoss.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.semoss.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ printf "%s-%s" .Values.env .Values.semoss.name }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{printf "%s-%s" .Values.env .Values.semoss.name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.semoss.image.repository }}:{{ .Values.semoss.image.tag }}"
+          imagePullPolicy: {{ .Values.semoss.image.pullPolicy }}
+          command:
+          - /bin/bash
+          args:
+            - -c
+            - echo export REMOTE_SECURITY_IP=$REMOTE_SECURITY_KEY  >> ~/.bashrc; echo export REMOTE_LOCALMASTER_IP=$REMOTE_LOCALMASTER_KEY  >> ~/.bashrc; echo export REMOTE_THEMES_IP=$REMOTE_THEMES_KEY  >> ~/.bashrc; echo export ZK=$REMOTE_ZK_KEY >> ~/.bashrc; echo export HOST=$POD_IP:8080 >> ~/.bashrc; source ~/.bashrc; git reset --hard; git pull; chmod 777 *; /opt/semoss-artifacts/artifacts/scripts/runCS.sh
+          env: 
+          - name: REMOTE_SECURITY_KEY
+            value: {{printf "%s%s_%s:%s%s_%s" "$" .Values.env "SECURITY_SERVICE_HOST" "$" .Values.env "SECURITY_SERVICE_PORT" | upper}}
+          - name: REMOTE_LOCALMASTER_KEY
+            value: {{printf "%s%s_%s:%s%s_%s" "$" .Values.env "LOCALMASTER_SERVICE_HOST" "$" .Values.env "LOCALMASTER_SERVICE_PORT" | upper}}
+          - name: REMOTE_THEMES_KEY
+            value: {{printf "%s%s_%s:%s%s_%s" "$" .Values.env "THEMES_SERVICE_HOST" "$" .Values.env "THEMES_SERVICE_PORT" | upper}}
+          - name: REMOTE_ZK_KEY
+            value: {{printf "%s%s_%s:%s%s_%s" "$" .Values.env "ZK_SERVICE_HOST" "$" .Values.env "ZK_SERVICE_PORT" | upper}}
+          - name: REMOTE_SECURITY
+            value: "true"
+          - name: REMOTE_LOCALMASTER
+            value: "true"
+          - name: REMOTE_THEMES
+            value: "true"
+          {{- if .Values.semoss.environmentVariables.AZCONN  }}
+          - name: AZCONN
+            value: {{quote .Values.semoss.environmentVariables.AZCONN }}
+          {{- end }}
+          {{- if .Values.semoss.environmentVariables.AZURE_ACCT_NAME  }}
+          - name: AZURE_ACCT_NAME
+            value: {{ .Values.semoss.environmentVariables.AZURE_ACCT_NAME }}
+          {{- end }}
+          {{- if .Values.semoss.environmentVariables.AZURE_ACCT_KEY  }}
+          - name: AZURE_ACCT_KEY
+            value: {{ .Values.semoss.environmentVariables.AZURE_ACCT_KEY }}
+          {{- end }}
+          {{- if .Values.semoss.environmentVariables.SEMOSS_IS_CLUSTER  }}
+          - name: SEMOSS_IS_CLUSTER
+            value: {{quote .Values.semoss.environmentVariables.SEMOSS_IS_CLUSTER }}
+          {{- end }}
+          {{- if .Values.semoss.environmentVariables.RSERVE_ON  }}
+          - name: RSERVE_ON
+            value: {{quote .Values.semoss.environmentVariables.RSERVE_ON }}
+          {{- end }}
+
+          - name: POD_IP
+            valueFrom:
+             fieldRef:
+               apiVersion: v1
+               fieldPath: status.podIP
+
+          ports:
+          - containerPort: {{.Values.semoss.service.port}}

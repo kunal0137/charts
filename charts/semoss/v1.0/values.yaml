@@ -1,0 +1,136 @@
+# Default values for semoss.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+env: "semoss"
+
+semoss:
+  replicaCount: 1
+  name: semoss
+  image:
+    repository: semoss/docker
+    tag: 3.5.6
+    pullPolicy: IfNotPresent
+
+  nameOverride: ""
+  fullnameOverride: ""
+
+  service:
+    type: ClusterIP
+    port: 8080
+    nodePort: 
+
+  environmentVariables:
+    AZURE_ACCT_KEY: ""
+    AZURE_ACCT_NAME: ""
+    RSERVE_ON: "false"
+    SEMOSS_IS_CLUSTER: ""
+    AZCONN: ""
+
+  ingress:
+    enabled: false
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: chart-example.local
+        paths: []
+
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local
+
+nginx:
+  replicaCount: 1
+  name: nginx
+  image:
+    repository: semoss/nginx2
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  nameOverride: ""
+  fullnameOverride: ""
+
+  service:
+    type: NodePort
+    port: 80
+    nodePort: 30100
+
+security:
+  replicaCount: 1
+  name: security
+  image:
+    repository: kunal0137/security
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  nameOverride: ""
+  fullnameOverride: ""
+
+  service:
+    type: ClusterIP
+    port: 1521
+
+localmaster:
+  replicaCount: 1
+  name: localmaster
+  image:
+    repository: kunal0137/localmaster
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  nameOverride: ""
+  fullnameOverride: ""
+
+  service:
+    type: ClusterIP
+    port: 1521
+
+themes:
+  replicaCount: 1
+  name: themes
+  image:
+    repository: kunal0137/themes
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  nameOverride: ""
+  fullnameOverride: ""
+
+  service:
+    type: ClusterIP
+    port: 1521
+
+zk:
+  replicaCount: 1
+  name: zk
+  image:
+    repository: zookeeper
+    tag: 3.4.14
+    pullPolicy: IfNotPresent
+
+  nameOverride: ""
+  fullnameOverride: ""
+
+  service:
+    type: ClusterIP
+    port: 2181
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
