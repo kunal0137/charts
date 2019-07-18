@@ -7,28 +7,24 @@ questions:
   type: string
   label: SEMOSS Image Tag
   group: "SEMOSS Configuration"
-questions:
 - variable: semoss.pullPolicy
   default: "IfNotPresent"
   description: "Pull Policy for SEMOSS"
   type: string
   label: Pull Policy for SEMOSS
   group: "SEMOSS Configuration"
-questions:
 - variable: semoss.service.type
   default: "ClusterIP"
   description: "Service type for SEMOSS"
   type: string
   label: Service type for SEMOSS
   group: "SEMOSS Configuration"
-questions:
 - variable: semoss.service.nodePort
   default: ""
   description: "NodePort for for SEMOSS (only if service type is NodePort)"
   type: string
   label: NodePort for for SEMOSS
   group: "SEMOSS Configuration"
-questions:
 - variable: semoss.environmentVariables.SEMOSS_IS_CLUSTER
   default: "true"
   description: "SEMOSS Cluster"
