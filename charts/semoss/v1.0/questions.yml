@@ -1,3 +1,5 @@
+categories:
+- Analytics
 questions:
 - variable: semoss.image
   default: "3.6.1"
