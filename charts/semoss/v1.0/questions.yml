@@ -47,7 +47,7 @@ questions:
     description: "Azure Account Name"
     type: string
     label: Azure Storage Account Name
-   - variable: semoss.environmentVariables.AZURE_ACCT_KEY
+  - variable: semoss.environmentVariables.AZURE_ACCT_KEY
     default: ""
     description: "Azure Account Key"
     type: string
