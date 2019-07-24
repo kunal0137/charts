@@ -18,7 +18,7 @@ questions:
   description: "Service type for SEMOSS"
   type: enum
   label: Service type for SEMOSS
-  group:a "SEMOSS Configuration"
+  group: "SEMOSS Configuration"
   options:
   - "ClusterIP"
   - "NodePort"
