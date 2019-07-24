@@ -7,7 +7,7 @@ questions:
   type: string
   label: SEMOSS Image Tag
   group: "SEMOSS Configuration"
-- variable: semoss.pullPolicy
+- variable: semoss.image.pullPolicy
   default: "IfNotPresent"
   description: "Pull Policy for SEMOSS"
   type: enum
@@ -86,7 +86,7 @@ questions:
   type: string
   label: NGINX Image Tag
   group: "NGINX Configuration"
-- variable: nginx.pullPolicy
+- variable: nginx.image.pullPolicy
   default: "IfNotPresent"
   description: "Pull Policy for NGINX"
   type: enum
@@ -120,7 +120,7 @@ questions:
   type: string
   label: Local Master Image Tag
   group: "Local Master Configuration"
-- variable: localmaster.pullPolicy
+- variable: localmaster.image.pullPolicy
   default: "IfNotPresent"
   description: "Pull Policy for Local Master"
   type: enum
@@ -131,7 +131,7 @@ questions:
   - "IfNotPresent"
   - "Never"
 - variable: localmaster.service.type
-  default: "NodePort"
+  default: "ClusterIP"
   description: "Service type for Local Master"
   type: enum
   label: Service type for Local Master
@@ -166,7 +166,7 @@ questions:
   type: string
   label: Security Image Tag
   group: "Security Configuration"
-- variable: security.pullPolicy
+- variable: security.image.pullPolicy
   default: "IfNotPresent"
   description: "Pull Policy for Security"
   type: enum
@@ -177,7 +177,7 @@ questions:
   - "IfNotPresent"
   - "Never"
 - variable: security.service.type
-  default: "NodePort"
+  default: "ClusterIP"
   description: "Service type for Security"
   type: enum
   label: Service type for Security
