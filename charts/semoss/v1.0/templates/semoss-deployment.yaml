@@ -47,6 +47,10 @@ spec:
           - name: AZCONN
             value: {{quote .Values.semoss.environmentVariables.AZCONN }}
           {{- end }}
+          {{- if .Values.semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER  }}
+          - name: SEMOSS_STORAGE_PROVIDER
+            value: {{quote .Values.semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER }}
+          {{- end }}
           {{- if .Values.semoss.environmentVariables.AZURE_ACCT_NAME  }}
           - name: AZURE_ACCT_NAME
             value: {{ .Values.semoss.environmentVariables.AZURE_ACCT_NAME }}
