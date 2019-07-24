@@ -58,14 +58,14 @@ questions:
     type: string
     label: Azure Storage Account Key
   - variable: semoss.environmentVariables.AWS_REGION
-    show_if: "semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER=AZURE"
+    show_if: "semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER=AWS"
     default: ""
-    description: "Azure Account Name"
+    description: "AWS Region"
     type: string
-    label: Azure Storage Account Name
+    label: AWS Region
   - variable: semoss.environmentVariables.AWS_BUCKET
-    show_if: "semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER=AZURE"
+    show_if: "semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER=AWS"
     default: ""
-    description: "Azure Account Key"
+    description: "AWS Bucket Name"
     type: string
-    label: Azure Storage Account Key
+    label: AWS Bucket Name
