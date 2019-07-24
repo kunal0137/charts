@@ -10,8 +10,18 @@ questions:
 - variable: semoss.pullPolicy
   default: "IfNotPresent"
   description: "Pull Policy for SEMOSS"
-  type: string
+  type: enum
   label: Pull Policy for SEMOSS
+  group: "SEMOSS Configuration"
+  options:
+  - "Always"
+  - "IfNotPresent"
+  - "Never"
+- variable: semoss.replicaCount
+  default: 1
+  description: "Initial replica count for SEMOSS"
+  type: int
+  label: Initial replica count for SEMOSS
   group: "SEMOSS Configuration"
 - variable: semoss.service.type
   default: "ClusterIP"
@@ -25,7 +35,7 @@ questions:
 - variable: semoss.service.nodePort
   show_if: "semoss.service.type=NodePort"
   default: ""
-  description: "NodePort for for SEMOSS (only if service type is NodePort)"
+  description: "NodePort for for SEMOSS"
   type: string
   label: NodePort for for SEMOSS
   group: "SEMOSS Configuration"
@@ -69,3 +79,35 @@ questions:
     description: "AWS Bucket Name"
     type: string
     label: AWS Bucket Name
+- variable: nginx.image
+  default: "latest"
+  description: "Enter the NGINX image tag"
+  type: string
+  label: SEMOSS Image Tag
+  group: "NGINX Configuration"
+- variable: semoss.pullPolicy
+  default: "IfNotPresent"
+  description: "Pull Policy for NGINX"
+  type: enum
+  label: Pull Policy for NGINX
+  group: "NGINX Configuration"
+  options:
+  - "Always"
+  - "IfNotPresent"
+  - "Never"
+- variable: NGINX.service.type
+  default: "NodePort"
+  description: "Service type for NGINX"
+  type: enum
+  label: Service type for NGINX
+  group: "NGINX Configuration"
+  options:
+  - "ClusterIP"
+  - "NodePort"
+- variable: NGINX.service.nodePort
+  show_if: "NGINX.service.type=NodePort"
+  default: ""
+  description: "NodePort for for NGINX"
+  type: string
+  label: NodePort for for NGINX
+  group: "NGINX Configuration"
