@@ -23,6 +23,7 @@ questions:
   - "ClusterIP"
   - "NodePort"
 - variable: semoss.service.nodePort
+  show_if: "semoss.service.type=NodePort"
   default: ""
   description: "NodePort for for SEMOSS (only if service type is NodePort)"
   type: string
