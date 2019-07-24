@@ -1,7 +1,7 @@
 categories:
 - Analytics
 questions:
-- variable: semoss.image
+- variable: semoss.image.tag
   default: "3.6.1"
   description: "Enter the SEMOSS image tag"
   type: string
@@ -80,7 +80,7 @@ questions:
     type: string
     label: AWS Bucket Name
 
-- variable: nginx.image
+- variable: nginx.image.tag
   default: "latest"
   description: "Enter the NGINX image tag"
   type: string
@@ -114,7 +114,7 @@ questions:
   group: "NGINX Configuration"
 
 
-- variable: localmaster.image
+- variable: localmaster.image.tag
   default: "latest"
   description: "Enter the Local Master image tag"
   type: string
@@ -160,7 +160,7 @@ questions:
   group: "Local Master Configuration"
 
 
-- variable: security.image
+- variable: security.image.tag
   default: "latest"
   description: "Enter the Security image tag"
   type: string
