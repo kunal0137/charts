@@ -25,6 +25,7 @@ semoss:
     AZURE_ACCT_NAME: ""
     RSERVE_ON: "false"
     SEMOSS_IS_CLUSTER: ""
+    SEMOSS_STORAGE_PROVIDER: ""
     AZCONN: ""
 
   ingress:

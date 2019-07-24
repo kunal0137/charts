@@ -16,9 +16,13 @@ questions:
 - variable: semoss.service.type
   default: "ClusterIP"
   description: "Service type for SEMOSS"
-  type: string
+  type: enum
   label: Service type for SEMOSS
-  group: "SEMOSS Configuration"
+  group:a "SEMOSS Configuration"
+  options:
+  - "ClusterIP"
+  - "NodePort"
+  show_subquestion_if: "NodePort"
 - variable: semoss.service.nodePort
   default: ""
   description: "NodePort for for SEMOSS (only if service type is NodePort)"
@@ -33,6 +37,14 @@ questions:
   label: Is SEMOSS in Cluster Set Up?
   group: "SEMOSS Configuration"
   subquestions:
+  - variable: semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER
+    default: "Azure"
+    type: enum
+    description: "Which cloud storage account?"
+    label: Which cloud storage account?
+    options:
+    - "Azure"
+    - "AWS"
   - variable: semoss.environmentVariables.AZCONN
     default: "true"
     description: "Using Azure storage?"
