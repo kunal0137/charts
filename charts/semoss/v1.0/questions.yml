@@ -38,24 +38,33 @@ questions:
   group: "SEMOSS Configuration"
   subquestions:
   - variable: semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER
-    default: "Azure"
+    default: "AZURE"
     type: enum
     description: "Which cloud storage account?"
     label: Which cloud storage account?
     options:
-    - "Azure"
+    - "AZURE"
     - "AWS"
-  - variable: semoss.environmentVariables.AZCONN
-    default: "true"
-    description: "Using Azure storage?"
-    type: boolean
-    label: Azure Storage
   - variable: semoss.environmentVariables.AZURE_ACCT_NAME
+    show_if: "semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER=AZURE"
     default: ""
     description: "Azure Account Name"
     type: string
     label: Azure Storage Account Name
   - variable: semoss.environmentVariables.AZURE_ACCT_KEY
+    show_if: "semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER=AZURE"
+    default: ""
+    description: "Azure Account Key"
+    type: string
+    label: Azure Storage Account Key
+  - variable: semoss.environmentVariables.AWS_REGION
+    show_if: "semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER=AZURE"
+    default: ""
+    description: "Azure Account Name"
+    type: string
+    label: Azure Storage Account Name
+  - variable: semoss.environmentVariables.AWS_BUCKET
+    show_if: "semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER=AZURE"
     default: ""
     description: "Azure Account Key"
     type: string
