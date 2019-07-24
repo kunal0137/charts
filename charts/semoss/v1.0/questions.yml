@@ -22,7 +22,6 @@ questions:
   options:
   - "ClusterIP"
   - "NodePort"
-  show_subquestion_if: "NodePort"
 - variable: semoss.service.nodePort
   default: ""
   description: "NodePort for for SEMOSS (only if service type is NodePort)"
