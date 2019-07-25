@@ -45,7 +45,7 @@ questions:
   type: boolean
   label: Turn sercurity on for SEMOSS
   group: "SEMOSS Configuration"
--variable: semoss.social.setSocial
+- variable: semoss.social.setSocial
   show_if: "semoss.securityOn=true"
   default: true
   description: "Set social properties for SEMOSS"
