@@ -35,10 +35,160 @@ questions:
 - variable: semoss.service.nodePort
   show_if: "semoss.service.type=NodePort"
   default: ""
-  description: "NodePort for for SEMOSS"
+  description: "NodePort for SEMOSS"
   type: string
-  label: NodePort for for SEMOSS
+  label: NodePort for SEMOSS
   group: "SEMOSS Configuration"
+- variable: semoss.securityOn
+  default: false
+  description: "Turn sercurity on for SEMOSS"
+  type: boolean
+  label: Turn sercurity on for SEMOSS
+  group: "SEMOSS Configuration"
+-variable: semoss.social.setSocial
+  show_if: "semoss.securityOn=true"
+  default: true
+  description: "Set social properties for SEMOSS"
+  type: boolean
+  label: Set social properties on for SEMOSS
+  group: "SEMOSS Configuration"
+  show_subquestion_if: true
+  subquestions:
+  - variable: semoss.social.redirectUrl
+    default: ""
+    type: string
+    description: "What is the redirect url account?"
+    label: What is the redirect url account?
+  - variable: semoss.social.google_maps_api
+    default: "online"
+    type: String
+    description: "Google Maps API"
+    label: Google Maps API
+  - variable: semoss.social.enable_native_login
+    default: false
+    type: boolean
+    description: "Enable Native Login"
+    label: Enable Native Login
+  - variable: semoss.social.enable_native_registration
+    show_if: "semoss.social.enable_native_login=true"
+    default: false
+    type: boolean
+    description: "Enable Native Registration"
+    label: Enable Native Registration
+  - variable: semoss.social.enable_google_login
+    default: false
+    type: boolean
+    description: "Enable Google Login"
+    label: Enable Google Login
+  - variable: semoss.social.google_client_id
+    show_if: "semoss.social.enable_google_login=true"
+    default: ""
+    type: String
+    description: "Google Client ID"
+    label: Google Client ID
+  - variable: semoss.social.google_secret_key
+    show_if: "semoss.social.enable_google_login=true"
+    default: ""
+    type: String
+    description: "Google Secret Key"
+    label: Google Secret Key
+  - variable: semoss.social.google_redirect_uri
+    show_if: "semoss.social.enable_google_login=true"
+    default: ""
+    type: String
+    description: "Google Redirect URL"
+    label: Google Redirect URL
+  - variable: semoss.social.google_scope
+    show_if: "semoss.social.enable_google_login=true"
+    default: "https://www.googleapis.com/auth/forms https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/cloud-language"
+    type: String
+    description: "Google Scope"
+    label: Google Scope
+  - variable: semoss.social.google_access_type
+    show_if: "semoss.social.enable_google_login=true"
+    default: "online"
+    type: String
+    description: "Google Access Type"
+    label: Google Access Type
+
+  - variable: semoss.social.enable_github_login
+    default: false
+    type: boolean
+    description: "Enable Github Login"
+    label: Enable Github Login
+  - variable: semoss.social.github_client_id
+    show_if: "semoss.social.enable_github_login=true"
+    default: ""
+    type: String
+    description: "Github Client ID"
+    label: Github Client ID
+  - variable: semoss.social.github_secret_key
+    show_if: "semoss.social.enable_github_login=true"
+    default: ""
+    type: String
+    description: "Github Secret Key"
+    label: Github Secret Key
+  - variable: semoss.social.github_redirect_uri
+    show_if: "semoss.social.enable_github_login=true"
+    default: ""
+    type: String
+    description: "Github Redirect URL"
+    label: Github Redirect URL
+  - variable: semoss.social.github_scope
+    show_if: "semoss.social.enable_github_login=true"
+    default: "public_repo"
+    type: String
+    description: "Github Scope"
+    label: Github Scope
+  - variable: semoss.social.google_access_type
+    show_if: "semoss.social.enable_google_login=true"
+    default: "online"
+    type: String
+    description: "Google Access Type"
+    label: Google Access Type
+
+  - variable: semoss.social.enable_ms_login
+    default: false
+    type: boolean
+    description: "Enable MS Login"
+    label: Enable MS Login
+  - variable: semoss.social.ms_client_id
+    show_if: "semoss.social.enable_ms_login=true"
+    default: ""
+    type: String
+    description: "MS Client ID"
+    label: MS Client ID
+  - variable: semoss.social.ms_secret_key
+    show_if: "semoss.social.enable_ms_login=true"
+    default: ""
+    type: String
+    description: "MS Secret Key"
+    label: MS Secret Key
+  - variable: semoss.social.ms_redirect_uri
+    show_if: "semoss.social.enable_ms_login=true"
+    default: ""
+    type: String
+    description: "MS Redirect URL"
+    label: MS Redirect URL
+  - variable: semoss.social.ms_scope
+    show_if: "semoss.social.enable_ms_login=true"
+    default: "User.Read"
+    type: String
+    description: "MS Scope"
+    label: MS Scope
+  - variable: semoss.social.ms_authority
+    show_if: "semoss.social.enable_ms_login=true"
+    default: ""
+    type: String
+    description: "MS Authority"
+    label: MS Authority
+  - variable: semoss.social.ms_tenant
+    show_if: "semoss.social.enable_ms_tenant=true"
+    default: ""
+    type: String
+    description: "MS Tenant"
+    label: MS Tenant
+
 - variable: semoss.environmentVariables.SEMOSS_IS_CLUSTER
   default: "true"
   description: "SEMOSS Cluster"

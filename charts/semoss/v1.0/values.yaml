@@ -12,9 +12,35 @@ semoss:
     tag: 3.5.6
     pullPolicy: IfNotPresent
 
+
   nameOverride: ""
   fullnameOverride: ""
-
+  securityOn: false
+  social:
+    setSocial:
+    redirectUrl:
+    enable_native_login:
+    enable_native_registration:
+    enable_google_login:
+    google_client_id:
+    google_secret_key:
+    google_redirect_uri:
+    google_scope:  "https://www.googleapis.com/auth/forms https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/cloud-language"
+    google_access_type: "online"
+    google_maps_api:
+    enable_github_login:
+    github_client_id:
+    github_secret_key:
+    github_redirect_uri:
+    github_scope: "public_repo"
+    enable_ms_login:
+    ms_authority:
+    ms_tenant:
+    ms_client_id:
+    ms_secret_key:
+    ms_redirect_uri:
+    ms_scope: "User.Read"
+    
   service:
     type: ClusterIP
     port: 8080
@@ -29,6 +55,8 @@ semoss:
     SEMOSS_IS_CLUSTER: ""
     SEMOSS_STORAGE_PROVIDER: ""
     AZCONN: ""
+    SECURITY_ON: "true"
+
 
   ingress:
     enabled: false
