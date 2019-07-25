@@ -40,6 +40,11 @@ semoss:
     ms_secret_key:
     ms_redirect_uri:
     ms_scope: "User.Read"
+  r:
+    r_on: true
+    r_connection_type:
+    r_pool_size:
+    r_user_recovery:
     
   service:
     type: ClusterIP

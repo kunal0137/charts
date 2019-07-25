@@ -44,14 +44,14 @@ questions:
   description: "Turn sercurity on for SEMOSS"
   type: boolean
   label: Turn sercurity on for SEMOSS
-  group: "SEMOSS Configuration"
+  group: "SEMOSS Security Configuration"
 - variable: semoss.social.setSocial
   show_if: "semoss.securityOn=true"
-  default: true
+  default: false
   description: "Set social properties for SEMOSS"
   type: boolean
   label: Set social properties on for SEMOSS
-  group: "SEMOSS Configuration"
+  group: "SEMOSS Security Configuration"
   show_subquestion_if: true
   subquestions:
   - variable: semoss.social.redirectUrl
@@ -60,8 +60,8 @@ questions:
     description: "What is the redirect url account?"
     label: What is the redirect url account?
   - variable: semoss.social.google_maps_api
-    default: "online"
-    type: String
+    default: ""
+    type: string
     description: "Google Maps API"
     label: Google Maps API
   - variable: semoss.social.enable_native_login
@@ -83,31 +83,31 @@ questions:
   - variable: semoss.social.google_client_id
     show_if: "semoss.social.enable_google_login=true"
     default: ""
-    type: String
+    type: string
     description: "Google Client ID"
     label: Google Client ID
   - variable: semoss.social.google_secret_key
     show_if: "semoss.social.enable_google_login=true"
     default: ""
-    type: String
+    type: string
     description: "Google Secret Key"
     label: Google Secret Key
   - variable: semoss.social.google_redirect_uri
     show_if: "semoss.social.enable_google_login=true"
     default: ""
-    type: String
+    type: string
     description: "Google Redirect URL"
     label: Google Redirect URL
   - variable: semoss.social.google_scope
     show_if: "semoss.social.enable_google_login=true"
     default: "https://www.googleapis.com/auth/forms https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/cloud-language"
-    type: String
+    type: string
     description: "Google Scope"
     label: Google Scope
   - variable: semoss.social.google_access_type
     show_if: "semoss.social.enable_google_login=true"
     default: "online"
-    type: String
+    type: string
     description: "Google Access Type"
     label: Google Access Type
 
@@ -119,31 +119,31 @@ questions:
   - variable: semoss.social.github_client_id
     show_if: "semoss.social.enable_github_login=true"
     default: ""
-    type: String
+    type: string
     description: "Github Client ID"
     label: Github Client ID
   - variable: semoss.social.github_secret_key
     show_if: "semoss.social.enable_github_login=true"
     default: ""
-    type: String
+    type: string
     description: "Github Secret Key"
     label: Github Secret Key
   - variable: semoss.social.github_redirect_uri
     show_if: "semoss.social.enable_github_login=true"
     default: ""
-    type: String
+    type: string
     description: "Github Redirect URL"
     label: Github Redirect URL
   - variable: semoss.social.github_scope
     show_if: "semoss.social.enable_github_login=true"
     default: "public_repo"
-    type: String
+    type: string
     description: "Github Scope"
     label: Github Scope
   - variable: semoss.social.google_access_type
     show_if: "semoss.social.enable_google_login=true"
     default: "online"
-    type: String
+    type: string
     description: "Google Access Type"
     label: Google Access Type
 
@@ -155,37 +155,37 @@ questions:
   - variable: semoss.social.ms_client_id
     show_if: "semoss.social.enable_ms_login=true"
     default: ""
-    type: String
+    type: string
     description: "MS Client ID"
     label: MS Client ID
   - variable: semoss.social.ms_secret_key
     show_if: "semoss.social.enable_ms_login=true"
     default: ""
-    type: String
+    type: string
     description: "MS Secret Key"
     label: MS Secret Key
   - variable: semoss.social.ms_redirect_uri
     show_if: "semoss.social.enable_ms_login=true"
     default: ""
-    type: String
+    type: string
     description: "MS Redirect URL"
     label: MS Redirect URL
   - variable: semoss.social.ms_scope
     show_if: "semoss.social.enable_ms_login=true"
     default: "User.Read"
-    type: String
+    type: string
     description: "MS Scope"
     label: MS Scope
   - variable: semoss.social.ms_authority
     show_if: "semoss.social.enable_ms_login=true"
     default: ""
-    type: String
+    type: string
     description: "MS Authority"
     label: MS Authority
   - variable: semoss.social.ms_tenant
     show_if: "semoss.social.enable_ms_tenant=true"
     default: ""
-    type: String
+    type: string
     description: "MS Tenant"
     label: MS Tenant
 
@@ -195,7 +195,7 @@ questions:
   type: boolean
   show_subquestion_if: true
   label: Is SEMOSS in Cluster Set Up?
-  group: "SEMOSS Configuration"
+  group: "SEMOSS Cluster Configuration"
   subquestions:
   - variable: semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER
     default: "AZURE"
@@ -229,6 +229,41 @@ questions:
     description: "AWS Bucket Name"
     type: string
     label: AWS Bucket Name
+- variable: semoss.r.r_on
+  default: true
+  description: "Use R"
+  type: boolean
+  label: Use R
+  group: "SEMOSS R Configuration"
+
+- variable: semoss.r.r_connection_type
+  default: "JRI"
+  description: "R Connection Type"
+  type: enum
+  label: R Connection Type
+  group: "SEMOSS R Configuration"
+  options:
+  - "JRI"
+  - "Rserve"
+  - "User_Rserve_Pooled"
+  - "User_Rserve_Dedicated"
+  - "User_Rserve_Single"
+
+- variable: semoss.r.r_pool_size
+  show_if: "semoss.r.r_connection_type=User_Rserve_Pooled"
+  default: 8
+  description: "Rserve Connection Pool Size"
+  type: integer
+  label: Rserve Connection Pool Size
+  group: "SEMOSS R Configuration"
+
+- variable: semoss.r.r_user_recovery
+  default: false
+  description: "Recover user R session"
+  type: boolean
+  label: Recover user R session
+  group: "SEMOSS R Configuration"
+
 
 - variable: nginx.image.tag
   default: "latest"
