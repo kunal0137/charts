@@ -39,6 +39,12 @@ questions:
   type: string
   label: NodePort for SEMOSS
   group: "SEMOSS Configuration"
+- variable: semoss.monolithCookie
+  default: "monolith"
+  description: "Name for Monolith Cookie"
+  type: string
+  label: Name for Monolith Cookie
+  group: "SEMOSS Configuration"
 - variable: semoss.securityOn
   default: false
   description: "Turn sercurity on for SEMOSS"
@@ -237,6 +243,7 @@ questions:
   group: "SEMOSS R Configuration"
 
 - variable: semoss.r.r_connection_type
+  show_if: "semoss.r.r_on=true"
   default: "JRI"
   description: "R Connection Type"
   type: enum
@@ -253,7 +260,7 @@ questions:
   show_if: "semoss.r.r_connection_type=User_Rserve_Pooled"
   default: 8
   description: "Rserve Connection Pool Size"
-  type: integer
+  type: int
   label: Rserve Connection Pool Size
   group: "SEMOSS R Configuration"
 

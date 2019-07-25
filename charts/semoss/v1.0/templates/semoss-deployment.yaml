@@ -71,6 +71,14 @@ spec:
           - name: SECURITY_ON
             value: {{quote .Values.semoss.securityOn }}
           {{- end }}
+          {{- if .Values.semoss.monolithCookie  }}
+          - name: MONOLITH_COOKIE
+            value: {{ .Values.semoss.monolithCookie }}
+          {{- end }}
+          {{- if .Values.semoss.setSocial  }}
+          - name: SETSOCIAL
+            value: {{quote .Values.semoss.setSocial }}
+          {{- end }}
           - name: POD_IP
             valueFrom:
              fieldRef:

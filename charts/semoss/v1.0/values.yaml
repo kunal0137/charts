@@ -15,6 +15,7 @@ semoss:
 
   nameOverride: ""
   fullnameOverride: ""
+  monolithCookie: "monolith"
   securityOn: false
   social:
     setSocial:
