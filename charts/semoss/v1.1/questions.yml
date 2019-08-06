@@ -45,18 +45,43 @@ questions:
   type: string
   label: Name for Monolith Cookie
   group: "SEMOSS Configuration"
-- variable: semoss.healthcheck.initialDelaySeconds
+- variable: semoss.readinessProbe.initialDelaySeconds
   default: 60
-  description: "Default initial delay for healthcheck"
+  description: "Default initial delay for readiness healthcheck"
   type: int
-  label: Default initial delay for healthcheck
-  group: "SEMOSS Security Configuration"
-- variable: semoss.healthcheck.periodCheck
+  label: Default initial delay for readiness healthcheck
+  group: "SEMOSS Configuration"
+- variable: semoss.readinessProbe.timeoutSeconds
+  default: 60
+  description: "Default timeout delay for readiness healthcheck"
+  type: int
+  label: Default timeout delay for readiness healthcheck
+  group: "SEMOSS Configuration"
+- variable: semoss.readinessProbe.periodCheck
   default: 5
-  description: "Default time period in seconds between checks"
+  description: "Default time period in seconds between readiness checks"
   type: int
-  label: Default time period in seconds between checks
-  group: "SEMOSS Security Configuration"
+  label: Default time period in seconds between readiness checks
+  group: "SEMOSS Configuration"
+- variable: semoss.livenessProbe.initialDelaySeconds
+  default: 60
+  description: "Default initial delay for liveness healthcheck"
+  type: int
+  label: Default initial delay for liveness healthcheck
+  group: "SEMOSS Configuration"
+- variable: semoss.livenessProbe.timeoutSeconds
+  default: 60
+  description: "Default timeout delay for liveness healthcheck"
+  type: int
+  label: Default timeout delay for liveness healthcheck
+  group: "SEMOSS Configuration"
+- variable: semoss.livenessProbe.periodCheck
+  default: 5
+  description: "Default time period in seconds between liveness checks"
+  type: int
+  label: Default time period in seconds between liveness checks
+  group: "SEMOSS Configuration"
+
 - variable: semoss.securityOn
   default: false
   description: "Turn sercurity on for SEMOSS"
