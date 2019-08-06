@@ -96,6 +96,11 @@ nginx:
   nameOverride: ""
   fullnameOverride: ""
 
+  livenessProbe:
+    initialDelaySeconds: 60
+    timeoutSeconds: 5
+    periodSeconds: 5
+    
   service:
     type: NodePort
     port: 80

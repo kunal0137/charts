@@ -52,7 +52,7 @@ questions:
   label: Default initial delay for readiness healthcheck
   group: "SEMOSS Configuration"
 - variable: semoss.readinessProbe.timeoutSeconds
-  default: 60
+  default: 5
   description: "Default timeout delay for readiness healthcheck"
   type: int
   label: Default timeout delay for readiness healthcheck
@@ -70,7 +70,7 @@ questions:
   label: Default initial delay for liveness healthcheck
   group: "SEMOSS Configuration"
 - variable: semoss.livenessProbe.timeoutSeconds
-  default: 60
+  default: 5
   description: "Default timeout delay for liveness healthcheck"
   type: int
   label: Default timeout delay for liveness healthcheck
@@ -342,6 +342,24 @@ questions:
   label: NodePort for for NGINX
   group: "NGINX Configuration"
 
+- variable: nginx.livenessProbe.initialDelaySeconds
+  default: 60
+  description: "Default initial delay for liveness healthcheck"
+  type: int
+  label: Default initial delay for liveness healthcheck
+  group: "NGINX Configuration"
+- variable: nginx.livenessProbe.timeoutSeconds
+  default: 5
+  description: "Default timeout delay for liveness healthcheck"
+  type: int
+  label: Default timeout delay for liveness healthcheck
+  group: "NGINX Configuration"
+- variable: nginx.livenessProbe.periodCheck
+  default: 5
+  description: "Default time period in seconds between liveness checks"
+  type: int
+  label: Default time period in seconds between liveness checks
+  group: "NGINX Configuration"
 
 - variable: localmaster.image.tag
   default: "latest"

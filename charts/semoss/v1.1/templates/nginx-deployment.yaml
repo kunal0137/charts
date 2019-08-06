@@ -26,6 +26,13 @@ spec:
         - name: {{printf "%s-%s"  .Values.env .Values.nginx.name}}
           image: "{{ .Values.nginx.image.repository }}:{{ .Values.nginx.image.tag }}"
           imagePullPolicy: {{ .Values.nginx.image.pullPolicy }}
+          livenessProbe:
+           httpGet:
+            path: /Monolith/api/config
+            port: 80
+           initialDelaySeconds: {{ .Values.nginx.livenessProbe.initialDelaySeconds }}
+           timeoutSeconds: {{ .Values.nginx.livenessProbe.timeoutSeconds }}
+           periodSeconds: {{ .Values.nginx.livenessProbe.periodSeconds }}
           command:
           - /bin/bash
           args:
