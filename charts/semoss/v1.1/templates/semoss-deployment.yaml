@@ -25,6 +25,15 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.semoss.image.repository }}:{{ .Values.semoss.image.tag }}"
           imagePullPolicy: {{ .Values.semoss.image.pullPolicy }}
+          livenessProbe:
+          httpGet:
+           path: /Monolith/api/config
+           port: 8080
+           httpHeaders:
+            - name: Custom-Header
+            value: Awesome
+           initialDelaySeconds: {{ .Values.semoss.healthcheck.initialDelay }}
+           periodSeconds:  {{ .Values.semoss.healthcheck.periodSeconds }}
           command:
           - /bin/bash
           args:

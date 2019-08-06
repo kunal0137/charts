@@ -12,7 +12,9 @@ semoss:
     tag: 3.5.6
     pullPolicy: IfNotPresent
 
-
+  healthcheck:
+    initialDelaySeconds: 60
+    periodSeconds: 5
   nameOverride: ""
   fullnameOverride: ""
   monolithCookie: "monolith"

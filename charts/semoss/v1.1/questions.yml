@@ -45,6 +45,18 @@ questions:
   type: string
   label: Name for Monolith Cookie
   group: "SEMOSS Configuration"
+- variable: semoss.healthcheck.initialDelaySeconds
+  default: 60
+  description: "Default initial delay for healthcheck"
+  type: int
+  label: Default initial delay for healthcheck
+  group: "SEMOSS Security Configuration"
+- variable: semoss.healthcheck.periodCheck
+  default: 5
+  description: "Default time period in seconds between checks"
+  type: int
+  label: Default time period in seconds between checks
+  group: "SEMOSS Security Configuration"
 - variable: semoss.securityOn
   default: false
   description: "Turn sercurity on for SEMOSS"
