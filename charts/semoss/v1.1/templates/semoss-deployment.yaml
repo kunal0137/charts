@@ -29,16 +29,16 @@ spec:
            httpGet:
             path: /Monolith/api/config
             port: 8080
-           initialDelaySeconds: 30
-           timeoutSeconds: 3
-           periodSeconds: 5
+           initialDelaySeconds: {{ .Values.semoss.readinessProbe.initialDelaySeconds }}
+           timeoutSeconds: {{ .Values.semoss.readinessProbe.timeoutSeconds }}
+           periodSeconds: {{ .Values.semoss.readinessProbe.periodSeconds }}
           livenessProbe:
            httpGet:
             path: /Monolith/api/config
             port: 8080
-           initialDelaySeconds: 30
-           timeoutSeconds: 3
-           periodSeconds: 5
+           initialDelaySeconds: {{ .Values.semoss.livenessProbe.initialDelaySeconds }}
+           timeoutSeconds: {{ .Values.semoss.livenessProbe.timeoutSeconds }}
+           periodSeconds: {{ .Values.semoss.livenessProbe.periodSeconds }}
           command:
           - /bin/bash
           args:

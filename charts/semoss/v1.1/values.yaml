@@ -12,8 +12,13 @@ semoss:
     tag: 3.5.6
     pullPolicy: IfNotPresent
 
-  healthcheck:
+  readinessProbe:
     initialDelaySeconds: 60
+    timeoutSeconds: 5
+    periodSeconds: 5
+  livenessProbe:
+    initialDelaySeconds: 60
+    timeoutSeconds: 5
     periodSeconds: 5
   nameOverride: ""
   fullnameOverride: ""
