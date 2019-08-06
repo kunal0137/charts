@@ -3,8 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ printf "%s-%s"  .Values.env .Values.security.name}}
-  annotations:
-    "helm.sh/hook": "pre-install"
   labels:
     app.kubernetes.io/name: {{ printf "%s-%s"  .Values.env .Values.security.name}}
     helm.sh/chart: {{ include "semoss.chart" . }}
