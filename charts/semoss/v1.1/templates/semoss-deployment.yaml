@@ -58,42 +58,150 @@ spec:
             value: "true"
           - name: REMOTE_THEMES
             value: "true"
-          {{- if .Values.semoss.environmentVariables.AZCONN  }}
-          - name: AZCONN
-            value: {{quote .Values.semoss.environmentVariables.AZCONN }}
-          {{- end }}
-          {{- if .Values.semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER  }}
-          - name: SEMOSS_STORAGE_PROVIDER
-            value: {{ .Values.semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER }}
-          {{- end }}
-          {{- if .Values.semoss.environmentVariables.AZURE_ACCT_NAME  }}
-          - name: AZURE_ACCT_NAME
-            value: {{ .Values.semoss.environmentVariables.AZURE_ACCT_NAME }}
-          {{- end }}
-          {{- if .Values.semoss.environmentVariables.AZURE_ACCT_KEY  }}
-          - name: AZURE_ACCT_KEY
-            value: {{ .Values.semoss.environmentVariables.AZURE_ACCT_KEY }}
-          {{- end }}
+
           {{- if .Values.semoss.environmentVariables.SEMOSS_IS_CLUSTER  }}
           - name: SEMOSS_IS_CLUSTER
             value: {{quote .Values.semoss.environmentVariables.SEMOSS_IS_CLUSTER }}
           {{- end }}
-          {{- if .Values.semoss.environmentVariables.RSERVE_ON  }}
-          - name: RSERVE_ON
-            value: {{quote .Values.semoss.environmentVariables.RSERVE_ON }}
+
+          {{- if .Values.semoss.environmentVariables.AZCONN  }}
+          - name: AZCONN
+            value: {{quote .Values.semoss.environmentVariables.AZCONN }}
           {{- end }}
+
+          {{- if .Values.semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER  }}
+          - name: SEMOSS_STORAGE_PROVIDER
+            value: {{ .Values.semoss.environmentVariables.SEMOSS_STORAGE_PROVIDER }}
+          {{- end }}
+
+          {{- if .Values.semoss.environmentVariables.AZURE_ACCT_NAME  }}
+          - name: AZURE_ACCT_NAME
+            value: {{ .Values.semoss.environmentVariables.AZURE_ACCT_NAME }}
+          {{- end }}
+
+          {{- if .Values.semoss.environmentVariables.AZURE_ACCT_KEY  }}
+          - name: AZURE_ACCT_KEY
+            value: {{ .Values.semoss.environmentVariables.AZURE_ACCT_KEY }}
+          {{- end }}
+
+          {{- if .Values.semoss.environmentVariables.AWS_REGION  }}
+          - name: AWS_REGION
+            value: {{ .Values.semoss.environmentVariables.AWS_REGION }}
+          {{- end }}
+
+          {{- if .Values.semoss.environmentVariables.AWS_BUCKET  }}
+          - name: AWS_BUCKET
+            value: {{ .Values.semoss.environmentVariables.AWS_BUCKET }}
+          {{- end }}
+
           {{- if .Values.semoss.securityOn  }}
           - name: SECURITY_ON
             value: {{quote .Values.semoss.securityOn }}
           {{- end }}
-          {{- if .Values.semoss.monolithCookie  }}
-          - name: MONOLITH_COOKIE
-            value: {{ .Values.semoss.monolithCookie }}
-          {{- end }}
+
           {{- if .Values.semoss.setSocial  }}
           - name: SETSOCIAL
             value: {{quote .Values.semoss.setSocial }}
           {{- end }}
+
+          {{- if .Values.semoss.redirectUrl  }}
+          - name: REDIRECT
+            value: {{quote .Values.semoss.redirectUrl }}
+          {{- end }}
+
+
+          {{- if .Values.semoss.enable_native_login  }}
+          - name: ENABLE_NATIVE
+            value: {{quote .Values.semoss.enable_native_login }}
+          {{- end }}
+
+          {{- if .Values.semoss.enable_native_registration  }}
+          - name: ENABLE_NATIVE_REGISTRATION
+            value: {{quote .Values.semoss.enable_native_registration }}
+          {{- end }}
+
+          {{- if .Values.semoss.enable_google_login  }}
+          - name: ENABLE_GOOGLE
+            value: {{quote .Values.semoss.enable_google_login }}
+          {{- end }}
+
+          {{- if .Values.semoss.google_client_id  }}
+          - name: GOOGLE_CLIENT_ID
+            value: {{quote .Values.semoss.google_client_id }}
+          {{- end }}
+
+          {{- if .Values.semoss.google_secret_key  }}
+          - name: GOOGLE_SECRET_KEY
+            value: {{quote .Values.semoss.google_secret_key }}
+          {{- end }}
+
+          {{- if .Values.semoss.google_redirect_uri  }}
+          - name: GOOGLE_REDIRECT
+            value: {{quote .Values.semoss.google_redirect_uri }}
+          {{- end }}
+
+          {{- if .Values.semoss.enable_github_login  }}
+          - name: ENABLE_GITHUB
+            value: {{quote .Values.semoss.enable_github_login }}
+          {{- end }}
+
+          {{- if .Values.semoss.github_client_id  }}
+          - name: GITHUB_CLIENT_ID
+            value: {{quote .Values.semoss.github_client_id }}
+          {{- end }}
+
+          {{- if .Values.semoss.google_secret_key  }}
+          - name: GITHUB_SECRET_KEY
+            value: {{quote .Values.semoss.google_secret_key }}
+          {{- end }}
+
+          {{- if .Values.semoss.github_redirect_uri  }}
+          - name: GITHUB_REDIRECT
+            value: {{quote .Values.semoss.github_redirect_uri }}
+          {{- end }}
+
+
+          {{- if .Values.semoss.enable_ms_login  }}
+          - name: ENABLE_MS
+            value: {{quote .Values.semoss.enable_ms_login }}
+          {{- end }}
+
+          {{- if .Values.semoss.ms_authority  }}
+          - name: MS_AUTHORITY
+            value: {{quote .Values.semoss.ms_authority }}
+          {{- end }}
+
+          {{- if .Values.semoss.ms_tenant  }}
+          - name: MS_TENANT
+            value: {{quote .Values.semoss.ms_tenant }}
+          {{- end }}
+          
+          {{- if .Values.semoss.ms_client_id  }}
+          - name: MS_CLIENT_ID
+            value: {{quote .Values.semoss.ms_client_id }}
+          {{- end }}
+
+          {{- if .Values.semoss.ms_secret_key  }}
+          - name: MS_SECRET_KEY
+            value: {{quote .Values.semoss.ms_secret_key }}
+          {{- end }}
+
+          {{- if .Values.semoss.ms_redirect_uri  }}
+          - name: MS_REDIRECT
+            value: {{quote .Values.semoss.ms_redirect_uri }}
+          {{- end }}
+
+
+          {{- if .Values.semoss.environmentVariables.RSERVE_ON  }}
+          - name: RSERVE_ON
+            value: {{quote .Values.semoss.environmentVariables.RSERVE_ON }}
+          {{- end }}
+
+          {{- if .Values.semoss.monolithCookie  }}
+          - name: MONOLITH_COOKIE
+            value: {{ .Values.semoss.monolithCookie }}
+          {{- end }}
+
           - name: POD_IP
             valueFrom:
              fieldRef:

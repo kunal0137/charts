@@ -143,7 +143,7 @@ questions:
     label: Google Redirect URL
   - variable: semoss.social.google_scope
     show_if: "semoss.social.enable_google_login=true"
-    default: "https://www.googleapis.com/auth/forms https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/cloud-language"
+    default: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
     type: string
     description: "Google Scope"
     label: Google Scope
