@@ -39,6 +39,10 @@ spec:
           env:
           - name: REMOTE_ZK_KEY
             value: {{printf "%s%s_%s:%s%s_%s" "$" .Values.env "ZK_SERVICE_HOST" "$" .Values.env "ZK_SERVICE_PORT" | upper}}
+          {{- if .Values.nginx.cookieName  }}
+          - name: NGINX_ROUTE
+            value: {{quote .Values.nginx.cookieName }}
+          {{- end }}
           - name: POD_IP
             valueFrom:
              fieldRef:

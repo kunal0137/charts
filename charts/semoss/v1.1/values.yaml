@@ -68,6 +68,7 @@ semoss:
     SEMOSS_STORAGE_PROVIDER: ""
     AZCONN: ""
     SECURITY_ON: "true"
+    FILE_UPLOAD_LIMIT: ""
 
 
   ingress:
@@ -94,7 +95,7 @@ nginx:
 
   nameOverride: ""
   fullnameOverride: ""
-
+  cookieName: ""
   livenessProbe:
     initialDelaySeconds: 60
     timeoutSeconds: 5

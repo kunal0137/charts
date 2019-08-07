@@ -59,6 +59,11 @@ spec:
           - name: REMOTE_THEMES
             value: "true"
 
+          {{- if .Values.semoss.environmentVariables.FILE_UPLOAD_LIMIT  }}
+          - name: FILE_UPLOAD_LIMIT
+            value: {{quote .Values.semoss.environmentVariables.FILE_UPLOAD_LIMIT }}
+          {{- end }}
+          
           {{- if .Values.semoss.environmentVariables.SEMOSS_IS_CLUSTER  }}
           - name: SEMOSS_IS_CLUSTER
             value: {{quote .Values.semoss.environmentVariables.SEMOSS_IS_CLUSTER }}

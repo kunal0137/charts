@@ -45,6 +45,14 @@ questions:
   type: string
   label: Name for Monolith Cookie
   group: "SEMOSS Configuration"
+
+- variable: semoss.environmentVariables.FILE_UPLOAD_LIMIT
+  default: 50
+  description: "File upload limit (MB)"
+  type: int
+  label: File upload limit (MB)
+  group: "SEMOSS Configuration"
+
 - variable: semoss.readinessProbe.initialDelaySeconds
   default: 60
   description: "Default initial delay for readiness healthcheck"
@@ -340,6 +348,13 @@ questions:
   description: "NodePort for for NGINX"
   type: string
   label: NodePort for for NGINX
+  group: "NGINX Configuration"
+
+- variable: nginx.cookieName
+  default: ""
+  description: "Custom cookie name for sticky session"
+  type: string
+  label: ustom cookie name for sticky session
   group: "NGINX Configuration"
 
 - variable: nginx.livenessProbe.initialDelaySeconds
