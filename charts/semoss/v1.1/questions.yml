@@ -354,7 +354,7 @@ questions:
   default: ""
   description: "Custom cookie name for sticky session"
   type: string
-  label: ustom cookie name for sticky session
+  label: Custom cookie name for sticky session
   group: "NGINX Configuration"
 
 - variable: nginx.livenessProbe.initialDelaySeconds
