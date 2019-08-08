@@ -251,3 +251,9 @@ spec:
           - name: csvinsights
             mountPath: /opt/semosshome/InsightCache/
         {{- end }}
+      {{- if eq .Values.semoss.r.r_connection_type "User_Rserve_Single" }}
+      volumes:
+      - name: rspace
+        emptyDir: {}
+      - name: csvinsights
+      {{- end }}
