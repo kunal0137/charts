@@ -253,7 +253,7 @@ spec:
         {{- end }}
       {{- if eq .Values.semoss.r.r_connection_type "User_Rserve_Single" }}
       volumes:
-      - name: rspace
+      - name: rtemp
         emptyDir: {}
       - name: csvinsights
       {{- end }}

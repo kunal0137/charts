@@ -21,7 +21,7 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{printf "%s-%s"  .Values.env .Values.security.name}}
+        - name: {{printf "%s-%s"  .Values.env .Values.localmaster.name}}
           image: "{{ .Values.localmaster.image.repository }}:{{ .Values.localmaster.image.tag }}"
           imagePullPolicy: {{ .Values.localmaster.image.pullPolicy }}
           ports:
