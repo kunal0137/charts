@@ -235,7 +235,7 @@ spec:
           {{- if eq .Values.semoss.r.r_connection_type "User_Rserve_Single" }}
           volumeMounts:
           - name: rtemp
-            mountPath: /opt/semosshome/R/temp
+            mountPath: /opt/semosshome/R/Temp
           - name: csvinsights
             mountPath: /opt/semosshome/InsightCache/
           {{- end }}
@@ -247,7 +247,7 @@ spec:
           args: ["--vanilla"]
           volumeMounts:
           - name: rtemp
-            mountPath: /opt/semosshome/R/temp
+            mountPath: /opt/semosshome/R/Temp
           - name: csvinsights
             mountPath: /opt/semosshome/InsightCache/
         {{- end }}
