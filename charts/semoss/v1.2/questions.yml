@@ -364,7 +364,7 @@ questions:
   group: "NGINX Configuration"
 
 - variable: nginx.cookieName
-  default: ""
+  default: "route"
   description: "Custom cookie name for sticky session"
   type: string
   label: Custom cookie name for sticky session
