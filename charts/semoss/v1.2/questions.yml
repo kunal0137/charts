@@ -1,6 +1,12 @@
 categories:
 - Analytics
 questions:
+- variable: env
+  default: "semoss"
+  description: "Enter Domain Tag"
+  type: string
+  label: Enter Domain Tag
+  group: "Domain Configuration"
 - variable: semoss.image.tag
   default: "3.6.1"
   description: "Enter the SEMOSS image tag"
