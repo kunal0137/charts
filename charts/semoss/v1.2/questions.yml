@@ -197,12 +197,6 @@ questions:
     type: string
     description: "Github Scope"
     label: Github Scope
-  - variable: semoss.social.google_access_type
-    show_if: "semoss.social.enable_google_login=true"
-    default: "online"
-    type: string
-    description: "Google Access Type"
-    label: Google Access Type
 
   - variable: semoss.social.enable_ms_login
     default: false
@@ -240,7 +234,7 @@ questions:
     description: "MS Authority"
     label: MS Authority
   - variable: semoss.social.ms_tenant
-    show_if: "semoss.social.enable_ms_tenant=true"
+    show_if: "semoss.social.enable_ms_login=true"
     default: ""
     type: string
     description: "MS Tenant"
