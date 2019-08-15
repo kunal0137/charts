@@ -217,11 +217,14 @@ spec:
             value: {{quote .Values.semoss.r.r_user_recovery }}
           {{- end }}
           
-
-
           {{- if .Values.semoss.monolithCookie  }}
           - name: MONOLITH_COOKIE
             value: {{ .Values.semoss.monolithCookie }}
+          {{- end }}
+
+          {{- if .Values.semoss.googleAnalytics  }}
+          - name: GOOGLE_ANALYTICS_ID
+            value: {{ .Values.semoss.googleAnalytics }}
           {{- end }}
 
           - name: POD_IP
