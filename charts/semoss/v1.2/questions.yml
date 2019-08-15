@@ -51,6 +51,12 @@ questions:
   type: string
   label: Name for Monolith Cookie
   group: "SEMOSS Configuration"
+- variable: semoss.googleAnalytics
+  default: "UA-66598715-4"
+  description: "Google Analytics Tag ID"
+  type: string
+  label: Google Analytics Tag ID
+  group: "SEMOSS Configuration"
 
 - variable: semoss.environmentVariables.FILE_UPLOAD_LIMIT
   default: 50

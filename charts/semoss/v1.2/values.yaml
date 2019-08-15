@@ -11,7 +11,7 @@ semoss:
     repository: semoss/docker
     tag: 3.5.6
     pullPolicy: IfNotPresent
-
+  
   readinessProbe:
     initialDelaySeconds: 60
     timeoutSeconds: 5
@@ -21,8 +21,9 @@ semoss:
     timeoutSeconds: 5
     periodSeconds: 5
   nameOverride: ""
-  fullnameOverride: ""
+  fullnameOverride: "UA-66598715-4"
   monolithCookie: "monolith"
+  googleAnalytics: ""
   securityOn: false
   social:
     setSocial:
