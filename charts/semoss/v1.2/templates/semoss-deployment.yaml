@@ -23,7 +23,8 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.semoss.image.repository }}:{{ .Values.semoss.image.tag }}"
-          imagePullPolicy: {{ .Values.semoss.image.pullPolicy }}  
+          imagePullPolicy: {{ .Values.semoss.image.pullPolicy }}
+          {{- if .Values.semoss.readinessProbe.turnOn}}
           readinessProbe:
            httpGet:
             path: /Monolith/api/config
@@ -31,6 +32,8 @@ spec:
            initialDelaySeconds: {{ .Values.semoss.readinessProbe.initialDelaySeconds }}
            timeoutSeconds: {{ .Values.semoss.readinessProbe.timeoutSeconds }}
            periodSeconds: {{ .Values.semoss.readinessProbe.periodSeconds }}
+          {{- end }}
+          {{- if .Values.semoss.livenessProbe.turnOn}}
           livenessProbe:
            httpGet:
             path: /Monolith/api/config
@@ -38,6 +41,7 @@ spec:
            initialDelaySeconds: {{ .Values.semoss.livenessProbe.initialDelaySeconds }}
            timeoutSeconds: {{ .Values.semoss.livenessProbe.timeoutSeconds }}
            periodSeconds: {{ .Values.semoss.livenessProbe.periodSeconds }}
+          {{- end }}
           command:
           - /bin/bash
           args:
@@ -113,7 +117,7 @@ spec:
           - name: ANONYMOUS_USER_UPLOAD
             value: {{quote .Values.semoss.security.anonymousUserUploadOn }}
           {{- end }}
-          
+
           {{- if .Values.semoss.social.setSocial  }}
           - name: SETSOCIAL
             value: {{quote .Values.semoss.social.setSocial }}

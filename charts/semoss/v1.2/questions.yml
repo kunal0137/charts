@@ -65,6 +65,13 @@ questions:
   label: File upload limit (MB)
   group: "SEMOSS Configuration"
 
+- variable: semoss.readinessProbe.turnOn
+  default: true
+  description: "Turn on readiness healthcheck"
+  type: boolean
+  label: Turn on readiness healthcheck
+  group: "SEMOSS Configuration"
+
 - variable: semoss.readinessProbe.initialDelaySeconds
   default: 60
   description: "Default initial delay for readiness healthcheck"
@@ -83,6 +90,14 @@ questions:
   type: int
   label: Default time period in seconds between readiness checks
   group: "SEMOSS Configuration"
+
+- variable: semoss.livenessProbe.turnOn
+  default: true
+  description: "Turn on liveness healthcheck"
+  type: boolean
+  label: Turn on liveness healthcheck
+  group: "SEMOSS Configuration"
+
 - variable: semoss.livenessProbe.initialDelaySeconds
   default: 60
   description: "Default initial delay for liveness healthcheck"
