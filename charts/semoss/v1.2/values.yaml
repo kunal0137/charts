@@ -24,7 +24,10 @@ semoss:
   fullnameOverride: "UA-66598715-4"
   monolithCookie: "monolith"
   googleAnalytics: ""
-  securityOn: false
+  security:
+    securityOn: false
+    anonymousUserOn: false
+    anonymousUserUploadOn: false
   social:
     setSocial:
     redirectUrl:

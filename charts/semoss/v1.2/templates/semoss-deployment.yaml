@@ -99,11 +99,21 @@ spec:
             value: {{ .Values.semoss.environmentVariables.AWS_BUCKET }}
           {{- end }}
 
-          {{- if .Values.semoss.securityOn  }}
+          {{- if .Values.semoss.security.securityOn  }}
           - name: SECURITY_ON
-            value: {{quote .Values.semoss.securityOn }}
+            value: {{quote .Values.semoss.security.securityOn }}
           {{- end }}
 
+          {{- if .Values.semoss.security.anonymousUserOn  }}
+          - name: ANONYMOUS_USERS
+            value: {{quote .Values.semoss.security.anonymousUserOn }}
+          {{- end }}
+
+          {{- if .Values.semoss.security.anonymousUserUploadOn  }}
+          - name: ANONYMOUS_USER_UPLOAD
+            value: {{quote .Values.semoss.security.anonymousUserUploadOn }}
+          {{- end }}
+          
           {{- if .Values.semoss.social.setSocial  }}
           - name: SETSOCIAL
             value: {{quote .Values.semoss.social.setSocial }}

@@ -102,11 +102,23 @@ questions:
   label: Default time period in seconds between liveness checks
   group: "SEMOSS Configuration"
 
-- variable: semoss.securityOn
+- variable: semoss.security.securityOn
   default: false
   description: "Turn sercurity on for SEMOSS"
   type: boolean
   label: Turn sercurity on for SEMOSS
+  group: "SEMOSS Security Configuration"
+- variable: semoss.security.anonymousUserOn
+  default: false
+  description: "Enable anonymous users for SEMOSS"
+  type: boolean
+  label: Enable anonymous users for SEMOSS
+  group: "SEMOSS Security Configuration"
+- variable: semoss.security.anonymousUserUploadOn
+  default: false
+  description: "Enable anonymous users to upload to SEMOSS"
+  type: boolean
+  label: Enable anonymous users to upload to SEMOSS
   group: "SEMOSS Security Configuration"
 - variable: semoss.social.setSocial
   show_if: "semoss.securityOn=true"
