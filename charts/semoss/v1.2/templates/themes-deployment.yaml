@@ -26,3 +26,14 @@ spec:
           imagePullPolicy: {{ .Values.themes.image.pullPolicy }}
           ports:
           - containerPort: {{.Values.themes.service.port}}
+          {{- if .Values.themes.useStorage}}
+          volumeMounts:
+          - mountPath: /opt/h2-data
+            name:  {{.Values.themes.volume.name}}
+          {{- end}}
+      {{- if .Values.themes.useStorage}}
+      volumes:
+      - name: {{.Values.themes.volume.name}}
+        persistentVolumeClaim:
+          claimName: {{.Values.themes.volume.persistentVolumeClaimName}}
+      {{- end}}

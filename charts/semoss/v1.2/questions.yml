@@ -454,6 +454,12 @@ questions:
   type: string
   label: NodePort for for Local Master
   group: "Local Master Configuration"
+- variable: localmaster.volume.useStorage
+  default: true
+  description: "Use PV for Local Master"
+  type: boolean
+  label: Use PV for Local Master
+  group: "Local Master Configuration"
 - variable: localmaster.volume.name
   default: "lm"
   description: "Enter name for local master volume"
@@ -500,6 +506,12 @@ questions:
   type: string
   label: NodePort for for Security
   group: "Security Configuration"
+- variable: security.volume.useStorage
+  default: true
+  description: "Use PV for Security"
+  type: boolean
+  label: Use PV for Security
+  group: "Security Configuration"
 - variable: security.volume.name
   default: "sec"
   description: "Enter name for Security volume"
@@ -509,6 +521,58 @@ questions:
 - variable: security.volume.persistentVolumeClaimName
   default: "secpvc"
   description: "Enter name for Security persistentVolumeClaim"
+  type: string
+  label: Enter name for Security persistentVolumeClaimName
+  group: "Security Configuration"
+
+
+- variable: themes.image.tag
+  default: "latest"
+  description: "Enter the Themes image tag"
+  type: string
+  label: Themes Image Tag
+  group: "Themes Configuration"
+- variable: themes.image.pullPolicy
+  default: "IfNotPresent"
+  description: "Pull Policy for Themes"
+  type: enum
+  label: Pull Policy for Themes
+  group: "Themes Configuration"
+  options:
+  - "Always"
+  - "IfNotPresent"
+  - "Never"
+- variable: themes.service.type
+  default: "ClusterIP"
+  description: "Service type for Themes"
+  type: enum
+  label: Service type for Themes
+  group: "Themes Configuration"
+  options:
+  - "ClusterIP"
+  - "NodePort"
+- variable: themes.service.nodePort
+  show_if: "security.service.type=NodePort"
+  default: ""
+  description: "NodePort for for Themes"
+  type: string
+  label: NodePort for for Security
+  group: "Themes Configuration"
+- variable: themes.volume.useStorage
+  default: true
+  description: "Use PV for Themes"
+  type: boolean
+  label: Use PV for Themes
+  group: "Themes Configuration"
+- variable: themes.volume.name
+  default: "themes"
+  description: "Enter name for Themes volume"
+  type: string
+  label: Enter name for Themes volume
+  group: "Themes Configuration"
+- variable: themes.volume.persistentVolumeClaimName
+  default: "themespvc"
+  description: "Enter name for Themes persistentVolumeClaim"
   type: string
   label: Enter name for Security persistentVolumeClaimName
   group: "Security Configuration"
