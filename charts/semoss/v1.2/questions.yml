@@ -574,5 +574,5 @@ questions:
   default: "themespvc"
   description: "Enter name for Themes persistentVolumeClaim"
   type: string
-  label: Enter name for Security persistentVolumeClaimName
-  group: "Security Configuration"
+  label: Enter name for Themes persistentVolumeClaimName
+  group: "Themes Configuration"
