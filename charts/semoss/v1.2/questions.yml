@@ -454,7 +454,7 @@ questions:
   type: string
   label: NodePort for Local Master
   group: "Local Master Configuration"
-- variable: localmaster.volume.useStorage
+- variable: localmaster.useStorage
   default: true
   description: "Use PV for Local Master"
   type: boolean
@@ -506,7 +506,7 @@ questions:
   type: string
   label: NodePort for Security
   group: "Security Configuration"
-- variable: security.volume.useStorage
+- variable: security.useStorage
   default: true
   description: "Use PV for Security"
   type: boolean
@@ -558,7 +558,7 @@ questions:
   type: string
   label: NodePort for Themes
   group: "Themes Configuration"
-- variable: themes.volume.useStorage
+- variable: themes.useStorage
   default: true
   description: "Use PV for Themes"
   type: boolean
