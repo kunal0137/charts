@@ -450,9 +450,9 @@ questions:
 - variable: localmaster.service.nodePort
   show_if: "localmaster.service.type=NodePort"
   default: ""
-  description: "NodePort for for Local Master"
+  description: "NodePort for Local Master"
   type: string
-  label: NodePort for for Local Master
+  label: NodePort for Local Master
   group: "Local Master Configuration"
 - variable: localmaster.volume.useStorage
   default: true
@@ -502,9 +502,9 @@ questions:
 - variable: security.service.nodePort
   show_if: "security.service.type=NodePort"
   default: ""
-  description: "NodePort for for Security"
+  description: "NodePort for Security"
   type: string
-  label: NodePort for for Security
+  label: NodePort for Security
   group: "Security Configuration"
 - variable: security.volume.useStorage
   default: true
@@ -554,9 +554,9 @@ questions:
 - variable: themes.service.nodePort
   show_if: "security.service.type=NodePort"
   default: ""
-  description: "NodePort for for Themes"
+  description: "NodePort for Themes"
   type: string
-  label: NodePort for for Security
+  label: NodePort for Themes
   group: "Themes Configuration"
 - variable: themes.volume.useStorage
   default: true
