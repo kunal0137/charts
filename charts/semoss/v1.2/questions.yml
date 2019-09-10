@@ -136,7 +136,7 @@ questions:
   label: Enable anonymous users to upload to SEMOSS
   group: "SEMOSS Security Configuration"
 - variable: semoss.social.setSocial
-  show_if: "semoss.securityOn=true"
+  show_if: "semoss.security.securityOn=true"
   default: false
   description: "Set social properties for SEMOSS"
   type: boolean
