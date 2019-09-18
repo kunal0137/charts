@@ -1,0 +1,26 @@
+{{- if .Values.localmaster.volume.enabled }}
+{{- if not .Values.localmaster.volume.existingClaimExists -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ printf "%s-%s"  .Values.env .Values.localmaster.volume.name}}
+  labels:
+    app: {{ template "docker-registry.fullname" . }}
+    helm.sh/chart: {{ include "semoss.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  accessModes:
+    - {{ .Values.localmaster.volume.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.localmaster.volume.size | quote }}
+{{- if .Values.localmaster.volume.storageClass }}
+{{- if (eq "-" .Values.localmaster.volume.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.localmaster.volume.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end -}}

@@ -35,6 +35,6 @@ spec:
       volumes:
       - name: {{.Values.security.volume.name}}
         persistentVolumeClaim:
-          claimName: {{ if .Values.security.volume.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{printf "%s-%s"  .Values.env .Values.security.volume.name}}{{- end }}
+          claimName: {{ if .Values.security.volume.existingClaim }}{{ .Values.security.volume.existingClaim }}{{- else }}{{printf "%s-%s"  .Values.env .Values.security.volume.name}}{{- end }}
           {{.Values.security.volume.persistentVolumeClaimName}}
       {{- end}}
