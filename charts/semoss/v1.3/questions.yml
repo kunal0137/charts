@@ -514,19 +514,25 @@ questions:
   group: "Security Configuration"
   show_subquestion_if: true
   subquestions:
+  - variable: security.volume.existingClaimExists
+    default: false
+    description: "Is there an existing volume"
+    type: boolean
+    label: Is there an existing volume
   - variable: security.volume.existingClaim
+    show_if: "security.volume.existingClaimExists=true"
     default: "none"
     description: "If not empty, uses the specified existing PVC instead of creating new one"
     type: pvc
     label: Uses Existing Persistent Volume Cliam
   - variable: security.volume.size
-    show_if: "security.volume.existingClaim=none"
+    show_if: "security.volume.existingClaimExists=false"
     default: "3Gi"
     description: "Security Persistent Volume Size"
     type: string
     lable: Security Persistent Volume Size
   - variable: security.volume.storageClass
-    show_if: "security.volume.existingClaim=none"
+    show_if: "security.volume.existingClaimExists=false"
     default: ""
     description: "If undefined or null, uses the default StorageClass. Default to null"
     type: storageclass
