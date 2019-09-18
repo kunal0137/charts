@@ -455,7 +455,7 @@ questions:
   label: NodePort for Local Master
   group: "Local Master Configuration"
 - variable: localmaster.useStorage
-  default: true
+  default: false
   description: "Use Persistent Storage for Local Master"
   type: boolean
   label: Use Persistent Storage for Local Master
@@ -585,18 +585,20 @@ questions:
   label: NodePort for Themes
   group: "Themes Configuration"
 - variable: themes.useStorage
-  default: true
+  default: false
   description: "Use PV for Themes"
   type: boolean
   label: Use PV for Themes
   group: "Themes Configuration"
 - variable: themes.volume.name
+  show_if: "themes.useStorage=true"
   default: "themes"
   description: "Enter name for Themes volume"
   type: string
   label: Enter name for Themes volume
   group: "Themes Configuration"
 - variable: themes.volume.persistentVolumeClaimName
+  show_if: "themes.useStorage=true"
   default: "themespvc"
   description: "Enter name for Themes persistentVolumeClaim"
   type: string
