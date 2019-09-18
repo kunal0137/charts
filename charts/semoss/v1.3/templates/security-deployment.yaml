@@ -26,14 +26,15 @@ spec:
           imagePullPolicy: {{ .Values.security.image.pullPolicy }}
           ports:
           - containerPort: {{.Values.security.service.port}}
-          {{- if .Values.security.useStorage}}
+          {{- if .Values.security.volume.enabled}}
           volumeMounts:
           - mountPath: /opt/h2-data
             name:  {{.Values.security.volume.name}}
           {{- end}}
-      {{- if .Values.security.useStorage}}
+      {{- if .Values.security.volume.enabled}}
       volumes:
       - name: {{.Values.security.volume.name}}
         persistentVolumeClaim:
-          claimName: {{.Values.security.volume.persistentVolumeClaimName}}
+          claimName: {{ if .Values.security.volume.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{printf "%s-%s"  .Values.env .Values.security.volume.name}}{{- end }}
+          {{.Values.security.volume.persistentVolumeClaimName}}
       {{- end}}

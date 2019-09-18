@@ -1,0 +1,26 @@
+{{- if .Values.security.volume.enabled }}
+{{- if not .Values.security.volume.existingClaimExists -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ printf "%s-%s"  .Values.env .Values.security.volume.name}}
+  labels:
+    app: {{ template "docker-registry.fullname" . }}
+    helm.sh/chart: {{ include "semoss.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  accessModes:
+    - {{ .Values.security.volume.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.security.volume.size | quote }}
+{{- if .Values.security.volume.storageClass }}
+{{- if (eq "-" .Values.security.volume.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.security.volume.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end -}}
