@@ -134,7 +134,7 @@ security:
     name: sec
     persistentVolumeClaimName: secpvc
     size: 3Gi
-    existingClaim:
+    
 localmaster:
   replicaCount: 1
   name: localmaster
