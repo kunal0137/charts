@@ -130,7 +130,7 @@ security:
     type: ClusterIP
     port: 1521
   volume:
-    name: "securityVolume"
+    name: "securityvolume"
     accessMode: 'ReadWriteOnce'
     enabled: false
     size: 3Gi
@@ -149,7 +149,7 @@ localmaster:
     type: ClusterIP
     port: 1521
   volume:
-    name: "localmasterVolume"
+    name: "localmastervolume"
     accessMode: 'ReadWriteOnce'
     enabled: false
     size: 3Gi
