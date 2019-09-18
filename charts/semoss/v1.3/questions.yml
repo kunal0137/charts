@@ -514,26 +514,24 @@ questions:
   group: "Security Configuration"
   show_subquestion_if: true
   subquestions:
-  - variable: security.volume.size
-    default: "3Gi"
-    description: "Security Persistent Volume Size"
-    type: string
-    lable: Security Persistent Volume Size
-  - variable: security.volume.storageClass
-    default: ""
-    description: "If undefined or null, uses the default StorageClass. Default to null"
-    type: storageclass
-    label: Default StorageClass for Security
   - variable: security.volume.existingClaim
     default: ""
     description: "If not empty, uses the specified existing PVC instead of creating new one"
     type: pvc
     label: Uses Existing Persistent Volume Cliam
-  - variable: security.volume.persistentVolumeClaimName
-    default: "secpvc"
-    description: "Enter name for Security persistentVolumeClaim"
+  - variable: security.volume.size
+    show_if: "security.volume.existingClaim=null"
+    default: "3Gi"
+    description: "Security Persistent Volume Size"
     type: string
-    label: Enter name for Security persistentVolumeClaimName
+    lable: Security Persistent Volume Size
+  - variable: security.volume.storageClass
+    show_if: "security.volume.existingClaim=null"
+    default: ""
+    description: "If undefined or null, uses the default StorageClass. Default to null"
+    type: storageclass
+    label: Default StorageClass for Security
+
 
 
 - variable: themes.image.tag
