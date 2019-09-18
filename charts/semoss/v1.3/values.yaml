@@ -126,11 +126,11 @@ security:
 
   nameOverride: ""
   fullnameOverride: ""
-  useStorage: false
   service:
     type: ClusterIP
     port: 1521
   volume:
+    enabled: false
     size: 3Gi
     existingClaimExists: false
 
@@ -141,13 +141,13 @@ localmaster:
     repository: kunal0137/localmaster
     tag: latest
     pullPolicy: IfNotPresent
-  useStorage: false
   nameOverride: ""
   fullnameOverride: ""
   service:
     type: ClusterIP
     port: 1521
   volume:
+    enabled: false
     size: 3Gi
     existingClaimExists: false
 
@@ -163,8 +163,8 @@ themes:
   service:
     type: ClusterIP
     port: 1521
-  useStorage: false
   volume:
+    enabled: false
     name: themes
     persistentVolumeClaimName: themespvc
     
