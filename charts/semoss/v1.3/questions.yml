@@ -460,6 +460,7 @@ questions:
   type: boolean
   label: Use Persistent Storage for Local Master
   group: "Local Master Configuration"
+  show_subquestion_if: true
   subquestions:
   - variable: localmaster.volume.existingClaimExists
     default: false
@@ -484,22 +485,6 @@ questions:
     description: "If undefined or null, uses the default StorageClass. Default to null"
     type: storageclass
     label: Default StorageClass for Local Master
-
-
-
-- variable: localmaster.volume.name
-  default: "lm"
-  description: "Enter name for local master volume"
-  type: string
-  label: Enter name for local master volume
-  group: "Local Master Configuration"
-- variable: localmaster.volume.persistentVolumeClaimName
-  default: "lmpvc"
-  description: "Enter name for local master persistentVolumeClaim"
-  type: string
-  label: Enter name for local master persistentVolumeClaimName
-  group: "Local Master Configuration"
-
 
 - variable: security.image.tag
   default: "latest"
