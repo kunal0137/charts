@@ -520,13 +520,13 @@ questions:
     type: pvc
     label: Uses Existing Persistent Volume Cliam
   - variable: security.volume.size
-    show_if: "security.volume.existingClaim=null"
+    show_if: "security.volume.existingClaim=none"
     default: "3Gi"
     description: "Security Persistent Volume Size"
     type: string
     lable: Security Persistent Volume Size
   - variable: security.volume.storageClass
-    show_if: "security.volume.existingClaim=null"
+    show_if: "security.volume.existingClaim=none"
     default: ""
     description: "If undefined or null, uses the default StorageClass. Default to null"
     type: storageclass
