@@ -507,11 +507,12 @@ questions:
   label: NodePort for Security
   group: "Security Configuration"
 - variable: security.useStorage
-  default: true
+  default: false
   description: "Use Peristent Storage for Security"
   type: boolean
   label: Use PV for Security
   group: "Security Configuration"
+  show_subquestion_if: true
   subquestions:
   - variable: security.volume.size
     default: "3Gi"
@@ -533,7 +534,6 @@ questions:
     description: "Enter name for Security persistentVolumeClaim"
     type: string
     label: Enter name for Security persistentVolumeClaimName
-    group: "Security Configuration"
 
 
 - variable: themes.image.tag
