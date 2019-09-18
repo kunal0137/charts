@@ -73,18 +73,21 @@ questions:
   group: "SEMOSS Configuration"
 
 - variable: semoss.readinessProbe.initialDelaySeconds
+  show_if: "semoss.readinessProbe.turnOn=true"
   default: 60
   description: "Default initial delay for readiness healthcheck"
   type: int
   label: Default initial delay for readiness healthcheck
   group: "SEMOSS Configuration"
 - variable: semoss.readinessProbe.timeoutSeconds
+  show_if: "semoss.readinessProbe.turnOn=true"
   default: 5
   description: "Default timeout delay for readiness healthcheck"
   type: int
   label: Default timeout delay for readiness healthcheck
   group: "SEMOSS Configuration"
 - variable: semoss.readinessProbe.periodCheck
+  show_if: "semoss.readinessProbe.turnOn=true"
   default: 5
   description: "Default time period in seconds between readiness checks"
   type: int
@@ -99,18 +102,21 @@ questions:
   group: "SEMOSS Configuration"
 
 - variable: semoss.livenessProbe.initialDelaySeconds
+  show_if: "semoss.livenessProbe.turnOn=true"
   default: 60
   description: "Default initial delay for liveness healthcheck"
   type: int
   label: Default initial delay for liveness healthcheck
   group: "SEMOSS Configuration"
 - variable: semoss.livenessProbe.timeoutSeconds
+  show_if: "semoss.livenessProbe.turnOn=true"
   default: 5
   description: "Default timeout delay for liveness healthcheck"
   type: int
   label: Default timeout delay for liveness healthcheck
   group: "SEMOSS Configuration"
 - variable: semoss.livenessProbe.periodCheck
+  show_if: "semoss.livenessProbe.turnOn=true"
   default: 5
   description: "Default time period in seconds between liveness checks"
   type: int
