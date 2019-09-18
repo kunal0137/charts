@@ -515,7 +515,7 @@ questions:
   show_subquestion_if: true
   subquestions:
   - variable: security.volume.existingClaim
-    default: ""
+    default: "none"
     description: "If not empty, uses the specified existing PVC instead of creating new one"
     type: pvc
     label: Uses Existing Persistent Volume Cliam
