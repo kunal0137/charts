@@ -456,10 +456,37 @@ questions:
   group: "Local Master Configuration"
 - variable: localmaster.useStorage
   default: true
-  description: "Use PV for Local Master"
+  description: "Use Persistent Storage for Local Master"
   type: boolean
-  label: Use PV for Local Master
+  label: Use Persistent Storage for Local Master
   group: "Local Master Configuration"
+  subquestions:
+  - variable: localmaster.volume.existingClaimExists
+    default: false
+    description: "Is there an existing volume"
+    type: boolean
+    label: Is there an existing volume
+  - variable: localmaster.volume.existingClaim
+    show_if: "localmaster.volume.existingClaimExists=true"
+    default: "none"
+    description: "If not empty, uses the specified existing PVC instead of creating new one"
+    type: pvc
+    label: Uses Existing Persistent Volume Cliam
+  - variable: localmaster.volume.size
+    show_if: "localmaster.volume.existingClaimExists=false"
+    default: "3Gi"
+    description: "Local Master Persistent Volume Size"
+    type: string
+    label: Local Master Persistent Volume Size
+  - variable: localmaster.volume.storageClass
+    show_if: "localmaster.volume.existingClaimExists=false"
+    default: ""
+    description: "If undefined or null, uses the default StorageClass. Default to null"
+    type: storageclass
+    label: Default StorageClass for Local Master
+
+
+
 - variable: localmaster.volume.name
   default: "lm"
   description: "Enter name for local master volume"
@@ -510,7 +537,7 @@ questions:
   default: false
   description: "Use Peristent Storage for Security"
   type: boolean
-  label: Use PV for Security
+  label: Use Peristent Storage for Security
   group: "Security Configuration"
   show_subquestion_if: true
   subquestions:
@@ -530,7 +557,7 @@ questions:
     default: "3Gi"
     description: "Security Persistent Volume Size"
     type: string
-    lable: Security Persistent Volume Size
+    label: Security Persistent Volume Size
   - variable: security.volume.storageClass
     show_if: "security.volume.existingClaimExists=false"
     default: ""
