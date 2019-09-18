@@ -475,7 +475,7 @@ questions:
     label: Is there an existing volume
   - variable: localmaster.volume.existingClaim
     show_if: "localmaster.volume.existingClaimExists=true"
-    default: "none"
+    default: ""
     description: "If not empty, uses the specified existing PVC instead of creating new one"
     type: pvc
     label: Uses Existing Persistent Volume Cliam
@@ -539,7 +539,7 @@ questions:
     label: Is there an existing volume
   - variable: security.volume.existingClaim
     show_if: "security.volume.existingClaimExists=true"
-    default: "none"
+    default: ""
     description: "If not empty, uses the specified existing PVC instead of creating new one"
     type: pvc
     label: Uses Existing Persistent Volume Cliam
