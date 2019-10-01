@@ -422,8 +422,15 @@ questions:
   label: Default time period in seconds between liveness checks
   group: "NGINX Configuration"
 
+
+- variable: localmaster.image.repository
+  default: "oscarfonts/h2"
+  description: "Enter the Security image repository"
+  type: string
+  label: Local Master Image Repository
+  group: "Local Master Configuration"
 - variable: localmaster.image.tag
-  default: "latest"
+  default: "1.4.196"
   description: "Enter the Local Master image tag"
   type: string
   label: Local Master Image Tag
@@ -473,9 +480,14 @@ questions:
   label: Enter name for local master persistentVolumeClaimName
   group: "Local Master Configuration"
 
-
+- variable: security.image.repository
+  default: "oscarfonts/h2"
+  description: "Enter the Security image repository"
+  type: string
+  label: Security Image Repository
+  group: "Security Configuration"
 - variable: security.image.tag
-  default: "latest"
+  default: "1.4.196"
   description: "Enter the Security image tag"
   type: string
   label: Security Image Tag
