@@ -537,9 +537,14 @@ questions:
   label: Enter name for Security persistentVolumeClaimName
   group: "Security Configuration"
 
-
+- variable: themes.image.repository
+  default: "oscarfonts/h2"
+  description: "Enter the Themes image repository"
+  type: string
+  label: Themes Image Repository
+  group: "Themes Configuration"
 - variable: themes.image.tag
-  default: "latest"
+  default: "1.4.196"
   description: "Enter the Themes image tag"
   type: string
   label: Themes Image Tag
