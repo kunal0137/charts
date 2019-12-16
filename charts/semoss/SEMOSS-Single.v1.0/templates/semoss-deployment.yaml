@@ -5,6 +5,7 @@ metadata:
 
   labels:
     app.kubernetes.io/name: {{ printf "%s-%s" .Values.env .Values.semoss.name }}
+    helm.sh/chart: {{ include "semoss.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
