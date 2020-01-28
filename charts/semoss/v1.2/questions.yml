@@ -7,8 +7,14 @@ questions:
   type: string
   label: Enter Domain Tag
   group: "Domain Configuration"
+- variable: semoss.image.repository
+  default: "semoss/docker"
+  description: "Enter the Semoss image repository"
+  type: string
+  label: SEMOSS Image Repository
+  group: "SEMOSS Configuration"
 - variable: semoss.image.tag
-  default: "3.6.1"
+  default: "4.1.0"
   description: "Enter the SEMOSS image tag"
   type: string
   label: SEMOSS Image Tag
@@ -362,7 +368,12 @@ questions:
   label: Recover user R session
   group: "SEMOSS R Configuration"
 
-
+- variable: nginx.image.repository
+  default: "semoss/nginx2"
+  description: "Enter the NGINX image repository"
+  type: string
+  label: NGINX Image Repository
+  group: "NGINX Configuration"
 - variable: nginx.image.tag
   default: "latest"
   description: "Enter the NGINX image tag"
@@ -422,6 +433,18 @@ questions:
   label: Default time period in seconds between liveness checks
   group: "NGINX Configuration"
 
+- variable: zk.image.repository
+  default: "zookeeper"
+  description: "Enter the zookeeper image repository"
+  type: string
+  label: Zookeeper Image Repository
+  group: "Zookeeper Configuration"
+- variable: zk.image.tag
+  default: "3.4.14"
+  description: "Enter the zookeeper image tag"
+  type: string
+  label: Zookeeper Image Tag
+  group: "Zookeeper Configuration"
 
 - variable: localmaster.image.repository
   default: "oscarfonts/h2"
