@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ printf "%s-%s"  .Values.env .Values.security.name}}
+  name: {{ printf "%s-%s"  .Values.env .Values.scheduler.name}}
   labels:
     app.kubernetes.io/name: {{ printf "%s-%s"  .Values.env .Values.scheduler.name}}
     helm.sh/chart: {{ include "semoss.chart" . }}
