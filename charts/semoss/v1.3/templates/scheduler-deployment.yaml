@@ -27,6 +27,11 @@ spec:
           ports:
           - containerPort: {{.Values.scheduler.service.port}}
           {{- if .Values.scheduler.useStorage}}
+          command:
+          - /bin/bash
+          args:
+            - -c
+            - if [ ! -f /opt/h2-data/database.mv.db ]; then     echo "Scheduler Databse not found!";     cd /opt/h2-data;     wget https://github.com/kunal0137/SEMOSS_Config_Databases/raw/master/Scheduler/database.mv.db; fi
           volumeMounts:
           - mountPath: /opt/h2-data
             name:  {{.Values.scheduler.volume.name}}
