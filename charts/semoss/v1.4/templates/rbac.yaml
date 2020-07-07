@@ -1,0 +1,31 @@
+{{- if .Values.semoss.scheduler.definedSchedulerInstance}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.rbac.name }}
+  namespace: {{.Release.Namespace}}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Values.rbac.name }}
+rules:
+- apiGroups: [""]
+  resources: ["endpoints"]
+  verbs: ["get", "watch", "list", "create", "update", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ .Values.rbac.name }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Values.rbac.name }}
+subjects:
+- kind: ServiceAccount
+# note: the cluster role binding needs to be defined
+# for every namespace the operator service account lives in.
+  name: {{ .Values.rbac.name }}
+  namespace: {{.Release.Namespace}}
+{{- end }}
