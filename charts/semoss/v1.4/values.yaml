@@ -125,8 +125,8 @@ security:
   replicaCount: 1
   name: security
   image:
-    repository: kunal0137/security
-    tag: latest
+    repository: oscarfonts/h2
+    tag: 1.4.199
     pullPolicy: IfNotPresent
 
   nameOverride: ""
@@ -143,8 +143,8 @@ localmaster:
   replicaCount: 1
   name: localmaster
   image:
-    repository: kunal0137/localmaster
-    tag: latest
+    repository: oscarfonts/h2
+    tag: 1.4.199
     pullPolicy: IfNotPresent
   useStorage: false
   nameOverride: ""
@@ -160,8 +160,8 @@ scheduler:
   replicaCount: 1
   name: scheduler
   image:
-    repository: kunal0137/scheduler
-    tag: latest
+    repository: oscarfonts/h2
+    tag: 1.4.199
     pullPolicy: IfNotPresent
   useStorage: false
   nameOverride: ""
@@ -177,8 +177,8 @@ themes:
   replicaCount: 1
   name: themes
   image:
-    repository: kunal0137/themes
-    tag: latest
+    repository: oscarfonts/h2
+    tag: 1.4.199
     pullPolicy: IfNotPresent
   nameOverride: ""
   fullnameOverride: ""

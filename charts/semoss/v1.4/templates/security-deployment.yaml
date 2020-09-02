@@ -25,12 +25,12 @@ spec:
           image: "{{ .Values.security.image.repository }}:{{ .Values.security.image.tag }}"
           imagePullPolicy: {{ .Values.security.image.pullPolicy }}
           ports:
-		  - containerPort: {{.Values.security.service.port}}
-		  command:
-			- /bin/bash
-			args:
-			  - -c
-			  - if [ ! -f /opt/h2-data/database.mv.db ]; then     echo "Security Database not found!";     cd /opt/h2-data;     wget https://github.com/kunal0137/SEMOSS_Config_Databases/raw/master/Security/database.mv.db; fi;java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server -web -webAllowOthers -webPort 81 -tcp -tcpAllowOthers -tcpPort 1521 -baseDir /opt/h2-data
+          - containerPort: {{.Values.security.service.port}}
+          command:
+          - /bin/bash
+          args:
+            - -c
+            - if [ ! -f /opt/h2-data/database.mv.db ]; then     echo "Security Database not found!";     cd /opt/h2-data;     wget https://github.com/kunal0137/SEMOSS_Config_Databases/raw/master/Security/database.mv.db; fi;java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server -web -webAllowOthers -webPort 81 -tcp -tcpAllowOthers -tcpPort 1521 -baseDir /opt/h2-data
           {{- if .Values.security.useStorage}}
           volumeMounts:
           - mountPath: /opt/h2-data

@@ -49,7 +49,7 @@ spec:
           - /bin/bash
           args:
             - -c
-            - echo export REMOTE_SECURITY_IP=$REMOTE_SECURITY_KEY  >> ~/.bashrc; echo export REMOTE_LOCALMASTER_IP=$REMOTE_LOCALMASTER_KEY  >> ~/.bashrc; echo export REMOTE_SCHEDULER_IP=$REMOTE_SCHEDULER_KEY  >> ~/.bashrc; echo export REMOTE_THEMES_IP=$REMOTE_THEMES_KEY  >> ~/.bashrc; echo export ZK=$REMOTE_ZK_KEY >> ~/.bashrc; echo export HOST=$POD_IP:8080 >> ~/.bashrc; source ~/.bashrc; git reset --hard; git pull; chmod 777 *; /opt/semoss-artifacts/artifacts/scripts/runCS.sh
+            - echo export REMOTE_SECURITY_IP=$REMOTE_SECURITY_KEY  >> ~/.bashrc; echo export REMOTE_LOCALMASTER_IP=$REMOTE_LOCALMASTER_KEY  >> ~/.bashrc; echo export REMOTE_SCHEDULER_IP=$REMOTE_SCHEDULER_KEY  >> ~/.bashrc; echo export REMOTE_THEMES_IP=$REMOTE_THEMES_KEY  >> ~/.bashrc; echo export ZK=$REMOTE_ZK_KEY >> ~/.bashrc; echo export HOST=$POD_IP:8080 >> ~/.bashrc; source ~/.bashrc; git reset --hard; git pull; chmod 777 *; rm -r /opt/semosshome/rpa/json/*; sleep 10; sed -i "s:org.quartz.jobStore.isClustered=false:org.quartz.jobStore.isClustered=true:g" /opt/semosshome/quartz.properties; sed -i "s:#org.quartz.scheduler.instanceId=AUTO:org.quartz.scheduler.instanceId=AUTO:g" /opt/semosshome/quartz.properties;	/opt/semoss-artifacts/artifacts/scripts/runCS.sh
           env: 
           - name: REMOTE_SECURITY_KEY
             value: {{printf "%s%s_%s:%s%s_%s" "$" .Values.env "SECURITY_SERVICE_HOST" "$" .Values.env "SECURITY_SERVICE_PORT" | upper}}
