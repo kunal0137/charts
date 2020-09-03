@@ -27,7 +27,7 @@ semoss:
   monolithCookie: "monolith"
   googleAnalytics: ""
   scheduler:
-    definedSchedulerInstance: "true"
+    definedSchedulerInstance: "false"
     containerName: "elector"
     image:
       repository: k8s.gcr.io/leader-elector
