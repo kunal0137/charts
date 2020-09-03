@@ -26,12 +26,6 @@ semoss:
   fullnameOverride: "UA-66598715-4"
   monolithCookie: "monolith"
   googleAnalytics: ""
-  scheduler:
-    definedSchedulerInstance: "false"
-    containerName: "elector"
-    image:
-      repository: k8s.gcr.io/leader-elector
-      tag: "0.5"
   security:
     securityOn: false
     anonymousUserOn: false

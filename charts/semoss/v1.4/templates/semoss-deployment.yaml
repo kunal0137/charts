@@ -20,8 +20,6 @@ spec:
         app.kubernetes.io/name: {{printf "%s-%s" .Values.env .Values.semoss.name }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-      {{- if .Values.semoss.scheduler.definedSchedulerInstance}}
-      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.semoss.image.repository }}:{{ .Values.semoss.image.tag }}"
@@ -273,15 +271,6 @@ spec:
             mountPath: /opt/semosshome/R/Temp
           - name: csvinsights
             mountPath: /opt/semosshome/InsightCache/
-        {{- end }}
-        {{- if .Values.semoss.scheduler.definedSchedulerInstance}}
-        - name: {{printf "%s-%s"  .Values.env .Values.semoss.scheduler.containerName}}
-          image: "{{ .Values.semoss.scheduler.image.repository }}:{{ .Values.semoss.scheduler.image.tag }}"
-          imagePullPolicy: {{ .Values.semoss.image.pullPolicy }}
-          args:
-            - --election=example
-            - --http=0.0.0.0:4040
-            - --election-namespace={{.Release.Namespace}}
         {{- end }}
       {{- if eq .Values.semoss.r.r_connection_type "User_Rserve_Single" }}
       volumes:
