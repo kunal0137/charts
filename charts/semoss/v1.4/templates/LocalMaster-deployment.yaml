@@ -26,11 +26,10 @@ spec:
           ports:
           - containerPort: {{.Values.localmaster.service.port}}
           command:
-            - /bin/bash
-            args:
-              - -c
-              - if [ ! -f /opt/h2-data/databaseNewMaster.mv.db ]; then     echo "Local Master Database not found!";     cd /opt/h2-data;     wget https://github.com/kunal0137/SEMOSS_Config_Databases/raw/master/LocalMaster/databaseNewMaster.mv.db; fi;java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server -web -webAllowOthers -webPort 81 -tcp -tcpAllowOthers -tcpPort 1521 -baseDir /opt/h2-data
-             {{- if .Values.scheduler.useStorage}}
+          - /bin/bash
+          args:
+            - -c
+            - if [ ! -f /opt/h2-data/databaseNewMaster.mv.db ]; then     echo "LM Database not found!";     cd /opt/h2-data;     wget https://github.com/kunal0137/SEMOSS_Config_Databases/raw/master/LocalMaster/databaseNewMaster.mv.db; fi;java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server -web -webAllowOthers -webPort 81 -tcp -tcpAllowOthers -tcpPort 1521 -baseDir /opt/h2-data
           {{- if .Values.localmaster.useStorage}}
           volumeMounts:
           - mountPath: /opt/h2-data
@@ -42,4 +41,3 @@ spec:
         persistentVolumeClaim:
           claimName: {{.Values.localmaster.volume.persistentVolumeClaimName}}
       {{- end}}
-
